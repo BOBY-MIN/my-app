@@ -1,3 +1,51 @@
+
+# 필요 라이브러리 설치
+
+> react-router-dom
+
+* 라우터를 지원하는 라이브러리
+
+```
+$ npm install react-router-dom --save
+```
+
+> cross-env
+
+* NODE_PATH를 사용하여 절대경로로 파일을 불러오기 위하여 환경 변수를 설정할 때 운영체제마다 방식이 다르므로 공통적인 방법으로 설정할 수 있게 해주는 라이브러리.
+* package.json의 scripts 객체에 NODE_PATH 를 이용한 절대경로 설정은 deprecated 되었으니 사용을 지양함.
+
+```
+$ npm install --save-dev cross-env
+```
+
+# 설정 파일
+
+> jsconfig.js
+
+* import 문 경로를 절대경로로 이용할 수 있도록 하는 설정 추가
+
+```
+{
+    "compilerOptions": {
+        "baseUrl": "src"
+    },
+    "include": [
+        "src"
+    ]
+}
+```
+
+
+
+> package.json / package-lock.json
+
+* npm을 통한 모듈 설치 시 사용되는 파일
+* package-lock.json 의 경우 버전대가 지정되어있으므로 npm 설치 시 꼭 필요한 파일임.
+
+
+<br>
+<br>
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

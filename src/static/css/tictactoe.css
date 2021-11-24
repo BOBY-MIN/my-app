@@ -43,6 +43,7 @@ body {
   .game {
     display: flex;
     flex-direction: row;
+    padding: 1rem 0;
   }
   
   .game-info {
