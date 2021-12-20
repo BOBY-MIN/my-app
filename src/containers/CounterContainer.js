@@ -5,8 +5,11 @@ import { getRandomColor } from 'utils';
 
 // store 안의 state 값을 props 로 연결
 const mapStateToProps = (state) => ({
-    color: state.color,
-    number: state.number
+    color: state.colorData.color,
+    number: state.numberData.number
+    // 기존 reducer 를 subreducer로 분리 후 combineReducers 방식으로 변경함.
+    // color: state.color,
+    // number: state.number
 });
 
 /* 
