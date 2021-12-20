@@ -1,4 +1,12 @@
 
+# 개발자 도구 설치
+
+> Redux DevTools
+
+* chrome 확장프로그램
+* 액션이 dispatch 될때마다 로그를 보고 또 그 전 상태로 돌아갈 수 있게 함.
+
+
 # 필요 라이브러리 설치
 
 > react-router-dom

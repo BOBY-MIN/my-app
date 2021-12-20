@@ -13,8 +13,9 @@ import reducers from './reducers';
 import { Provider } from "react-redux";
 
 // redux store 생성
-const store = createStore(reducers);
-
+// const store = createStore(reducers);
+// 개발자도구에서 Redux DevTools 사용할 수 있도록 store 생성
+const store = createStore(reducers, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 
 const rootElement = document.getElementById("root");
 render(
