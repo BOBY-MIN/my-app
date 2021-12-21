@@ -1,11 +1,13 @@
 import { render } from "react-dom";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import App from "./App";
-import Expenses from "./routes/expenses";
-import Invoices from "./routes/invoices";
-import Game from "./routes/tictactoe";
+import App from "App";
+import Expenses from "routes/expenses";
+import Invoices from "routes/invoices";
+import Game from "routes/tictactoe";
 import Invoice from "routes/invoice";
-import CounterContainer from "containers/CounterContainer";
+// 카운터컨테이너 제거
+// import CounterContainer from "containers/CounterContainer";
+import Count from "routes/count";
 
 // redux 관련 불러오기
 import { createStore } from "redux";
@@ -36,7 +38,7 @@ render(
                         <Route path=":invoiceId" element={<Invoice />} />
                     </Route>
                     <Route path="game" element={<Game />} />
-                    <Route path="counter" element={<CounterContainer />} />
+                    <Route path="counter" element={<Count />} />
                     <Route
                         path="*"
                         element={
