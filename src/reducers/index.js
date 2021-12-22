@@ -94,7 +94,7 @@ const initialState = Map({
 
 // reducer 함수 정의
 // immutable 쓰는 방식으로 변환
-function counter(state = initialState, action) {
+function reducer(state = initialState, action) {
 
     // 레퍼런스 생성(코드 가독성을 위해서 미리 할당)
     // 구조분해할당 방식으로 값 초기화
@@ -194,4 +194,4 @@ function counter(state = initialState, action) {
 
 }
 
-export default counter
+export default reducer

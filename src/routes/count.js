@@ -30,4 +30,5 @@ const mapToDispatch = (dispatch) => ({
 });
 
 // 리덕스에 연결을 시키고 내보낸다
+// connect 함수를 수행함으로써 redux 의 subscribe 처리까지 완료함.
 export default connect(null, mapToDispatch)(Count);

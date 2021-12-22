@@ -27,10 +27,10 @@ const mapDispatchToProps = (dispatch) => ({
 
 // Counter 컴포넌트의 Container 컴포넌트
 // Counter 컴포넌트를 어플리케이션의 데이터 레이어와 묶는 역할을 합니다.
+// connect 함수를 수행함으로써 redux 의 subscribe 처리까지 완료함.
 const CounterListContainer = connect(
     mapStateToProps,
     mapDispatchToProps
 )(CounterList);
-
 
 export default CounterListContainer;

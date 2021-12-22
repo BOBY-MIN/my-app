@@ -17,6 +17,8 @@ import { Provider } from "react-redux";
 // redux store 생성
 // const store = createStore(reducers);
 // 개발자도구에서 Redux DevTools 사용할 수 있도록 store 생성
+// store 는 여러개 생성할 수 있으나 원칙적으로 하나만 사용해야 함.
+// 여러개 생성 시 디버깅 불가
 const store = createStore(reducers, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 
 const rootElement = document.getElementById("root");
