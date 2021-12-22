@@ -2,7 +2,9 @@ import React from 'react';
 import Buttons from 'components/Buttons';
 import CounterListContainer from 'containers/CounterListContainer';
 
-import * as actions from 'actions';
+// redux-actions, Ducks 구조를 사용한 방식으로 변경
+// import * as actions from 'actions';
+import * as actions from 'modules';
 import { connect } from 'react-redux';
 
 import { getRandomColor } from 'utils';

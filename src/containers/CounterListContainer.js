@@ -1,5 +1,7 @@
 import CounterList from 'components/CounterList';
-import * as actions from 'actions';
+// redux-actions, Ducks 구조를 사용한 방식으로 변경
+// import * as actions from 'actions';
+import * as actions from 'modules';
 import { connect } from 'react-redux';
 import { getRandomColor } from 'utils';
 import { Map, List } from 'immutable';

@@ -11,7 +11,9 @@ import Count from "routes/count";
 
 // redux 관련 불러오기
 import { createStore } from "redux";
-import reducers from './reducers';
+// redux-actions, Ducks 구조를 사용한 방식으로 변경
+// import reducers from 'reducers';
+import reducers from 'modules';
 import { Provider } from "react-redux";
 
 // redux store 생성
