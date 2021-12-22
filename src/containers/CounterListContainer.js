@@ -2,10 +2,13 @@ import CounterList from 'components/CounterList';
 import * as actions from 'actions';
 import { connect } from 'react-redux';
 import { getRandomColor } from 'utils';
+import { Map, List } from 'immutable';
 
 // store 안의 state 값을 props 로 연결
 const mapStateToProps = (state) => ({
-    counters: state.counters
+    // immutable 쓰는 방식으로 변환
+    // counters: state.counters
+    counters: state.get('counters')
 });
 
 /* 

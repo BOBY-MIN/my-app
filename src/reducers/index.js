@@ -73,83 +73,120 @@
 
 //////////////// counter 여러 개 처리를 위해 reducer 새로 정의
 import * as types from 'actions/ActionTypes';
+import { Map, List } from 'immutable';
 
 // 초기 상태 정의
-const initialState = {
-    counters: [
-        {
+const initialState = Map({
+    // immutable 쓰는 방식으로 변환
+    // counters: [
+    //     {
+    //         color: 'black',
+    //         number: 0
+    //     }
+    // ]
+    counters: List([
+        Map({
             color: 'black',
             number: 0
-        }
-    ]
-}
+        })
+    ])
+})
 
 // reducer 함수 정의
+// immutable 쓰는 방식으로 변환
 function counter(state = initialState, action) {
 
     // 레퍼런스 생성(코드 가독성을 위해서 미리 할당)
     // 구조분해할당 방식으로 값 초기화
-    const { counters } = state;
+    // const { counters } = state;
+
+    const counters = state.get('counters');
 
     // reducer 함수 내에서도 기존 배열에 직접 접근(push() 또는 pop())하는 것은 하면 안됨.(불변성 유지는 필수)
     // spread 문법이나 slice() 함수와 같이 기존 배열을 이용해 새로운 배열을 전달해주는 방식으로 처리(객체도 마찬가지)
+
+    // immutable 은 set(), push(), pop(), delete() 등을 해도 
+    // 기존 리스트를 수정하지 않고, 마지막 값을 제거한 새로운 리스트를 반환함.
+    // 그러므로 위에 기재한 일반 배열에 대한 push() / pop() 과는 다르게 불변성을 유지해줌.
     switch(action.type) {
         // counter 추가
         case types.CREATE:
-            return {
-                counters: [
-                    ...counters,
-                    {
-                        color: action.color,
-                        number: 0
-                    }
-                ]
-            };
+            // return {
+            //     counters: [
+            //         ...counters,
+            //         {
+            //             color: action.color,
+            //             number: 0
+            //         }
+            //     ]
+            // };
+            
+            return state.set('counters', counters.push(Map({
+                color: action.color,
+                number: 0
+            })));
 
         // slice 를 이용하여 맨 마지막 카운터 제외
         case types.REMOVE:
-            return {
-                counters: counters.slice(0, counters.length - 1)
-            };
+            // return {
+            //     counters: counters.slice(0, counters.length - 1)
+            // };
+
+            return state.set('counters', counters.pop());
 
         // action.index 번째 카운터의 number에 1을 더함.
         case types.INCREMENT:
-            return {
-                counters: [
-                    ...counters.slice(0, action.index), // 0 ~ action.index 사이의 아이템들을 잘라 넣음.
-                    {
-                        ...counters[action.index], // action.index 에 해당하는 객체에 기존값은 유지
-                        number: counters[action.index].number + 1 // number 값에 대해서는 새값으로 셋팅
-                    },
-                    ...counters.slice(action.index + 1, counters.length) // action.index + 1 ~ 마지막 인덱스의 아이템들을 잘라 넣음.
-                ]
-            };
+            // return {
+            //     counters: [
+            //         ...counters.slice(0, action.index), // 0 ~ action.index 사이의 아이템들을 잘라 넣음.
+            //         {
+            //             ...counters[action.index], // action.index 에 해당하는 객체에 기존값은 유지
+            //             number: counters[action.index].number + 1 // number 값에 대해서는 새값으로 셋팅
+            //         },
+            //         ...counters.slice(action.index + 1, counters.length) // action.index + 1 ~ 마지막 인덱스의 아이템들을 잘라 넣음.
+            //     ]
+            // };
+
+            return state.set('counters', counters.update(
+                action.index,
+                (counter) => counter.set('number', counter.get('number') + 1)
+            ));
 
         // action.index 번째 카운터의 number 에 1 을 뺌.
         case types.DECREMENT:
-            return {
-                counters: [
-                    ...counters.slice(0, action.index),
-                    {
-                        ...counters[action.index],
-                        number: counters[action.index].number - 1
-                    },
-                    ...counters.slice(action.index + 1, counters.length)
-                ]
-            };
+            // return {
+            //     counters: [
+            //         ...counters.slice(0, action.index),
+            //         {
+            //             ...counters[action.index],
+            //             number: counters[action.index].number - 1
+            //         },
+            //         ...counters.slice(action.index + 1, counters.length)
+            //     ]
+            // };
+
+            return state.set('counters', counters.update(
+                action.index,
+                (counter) => counter.set('number', counter.get('number') - 1)
+            ));
 
         // action.index 번째 카운터의 색상을 변경함.
         case types.SET_COLOR:
-            return {
-                counters: [
-                    ...counters.slice(0, action.index),
-                    {
-                        ...counters[action.index],
-                        color: action.color
-                    },
-                    ...counters.slice(action.index + 1, counters.length)
-                ]
-            };
+            // return {
+            //     counters: [
+            //         ...counters.slice(0, action.index),
+            //         {
+            //             ...counters[action.index],
+            //             color: action.color
+            //         },
+            //         ...counters.slice(action.index + 1, counters.length)
+            //     ]
+            // };
+
+            return state.set('counters', counters.update(
+                action.index,
+                (counter) => counter.set('color', action.color)
+            ));
 
         default:
             return state;

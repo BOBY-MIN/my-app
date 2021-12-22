@@ -99,6 +99,7 @@ import "static/css/tictactoe.css";
   
   export default class Game extends React.Component {
 
+    // 화면 인입 시마다 호출됨.
     constructor(props) {
       super(props);
       this.state = {
