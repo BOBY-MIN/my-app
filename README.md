@@ -6,6 +6,7 @@
 * chrome 확장프로그램
 * 액션이 dispatch 될때마다 로그를 보고 또 그 전 상태로 돌아갈 수 있게 함.
 
+<br>
 
 # 필요 라이브러리 설치
 
@@ -117,6 +118,15 @@ actions.setColor({index, color})
 
 ```
 
+
+> redux-devtools-extension
+
+* 크롬에서 Redux DevTools 을 사용하기 위해서는 store 생성 시 속성값 셋팅이 필요함. 하지만 redux middleware와 devtools 속성을 같이 셋팅하기가 힘듦.
+* middleware에서도 devtools 를 사용할 수 있도록 도와주는 라이브러리
+
+```
+$ npm i redux-devtools-extension
+```
 
 
 # 설정 파일
