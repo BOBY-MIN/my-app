@@ -11,11 +11,13 @@ const SET_COLOR = 'counter/SET_COLOR';
 
 // 액션생성자
 // 액션생성자의 경우 외부에서 사용하므로 export 를 붙임.
-export const create = createAction(CREATE); // 매개변수 color
+// 두번째 매개변수는 payloadCreator 세번째 매개변수는 metaCreator임.
+// payloadCreator 를 통해 매개변수를 지정할 수 있음.
+export const create = createAction(CREATE, index => index); // 매개변수 color
 export const remove = createAction(REMOVE);
-export const increment = createAction(INCREMENT); // 매개변수 index
-export const decrement = createAction(DECREMENT); // 매개변수 index
-export const setColor = createAction(SET_COLOR); // 매개변수 { index, color }
+export const increment = createAction(INCREMENT, index => index); // 매개변수 index
+export const decrement = createAction(DECREMENT, index => index); // 매개변수 index
+export const setColor = createAction(SET_COLOR, ({ index, color }) => ({ index, color })); // 매개변수 { index, color }
 
 
 // 초기 상태 정의

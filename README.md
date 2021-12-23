@@ -62,13 +62,11 @@ $ npm install redux react-redux
 $ npm install redux-actions
 ```
 
-* 단점은 매개변수를 payload 로 생성하는 방식이라 전달해주는 쪽에서 매개변수가 정해진다는 것이다.
-  때문에 action 생성 시 매개변수를 지정할 수 없으며, 주석으로 어떤 매개변수를 다루는지 정도만 알릴 수 있다.
 * 사용예
 
 ```
 -- 액션생성자
-export const increment = createAction(INCREMENT); // 매개변수 index
+export const increment = createAction(CREATE, color => color); // 매개변수 color
 export const setColor = createAction(SET_COLOR); // 매개변수 { index, color }
 
 -- dispatch 를 통해 액션에 매개변수 전달
