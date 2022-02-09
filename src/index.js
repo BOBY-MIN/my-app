@@ -8,6 +8,7 @@ import Invoice from "routes/invoice";
 // 카운터컨테이너 제거
 // import CounterContainer from "containers/CounterContainer";
 import Count from "routes/count";
+import ImmutableEx from "routes/immutable";
 
 // storeCreator 를 통해 store 생성 (서버사이드 렌더링 시 필요한 방법)
 // redux 관련 불러오기
@@ -33,8 +34,8 @@ render(
         <Provider store={store}>
             <Routes>
                 <Route path="/" element={<App />}>
-                    <Route path="expenses" element={<Expenses />} />
-                    <Route path="invoices" element={<Invoices />} >
+                    <Route path="expenses" element={<Expenses param="parameter"/>} />
+                    <Route path="invoices" element={<Invoices/>} >
                         <Route
                             index
                             element={
@@ -47,6 +48,7 @@ render(
                     </Route>
                     <Route path="game" element={<Game />} />
                     <Route path="counter" element={<Count />} />
+                    <Route path="immutable" element={<ImmutableEx />} />
                     <Route
                         path="*"
                         element={

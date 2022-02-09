@@ -13,7 +13,8 @@ export default function App() {
                 <Link to="/invoices">Invoices</Link> | {" "}
                 <Link to="/expenses">Expenses</Link> | {" "}
                 <Link to="/game">Game</Link> | {" "}
-                <Link to="/counter">Counter</Link>
+                <Link to="/counter">Counter</Link> | {" "}
+                <Link to="/immutable">Immutable</Link>
             </nav>
             <Outlet />
         </div>
