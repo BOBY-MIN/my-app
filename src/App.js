@@ -14,7 +14,8 @@ export default function App() {
                 <Link to="/expenses">Expenses</Link> | {" "}
                 <Link to="/game">Game</Link> | {" "}
                 <Link to="/counter">Counter</Link> | {" "}
-                <Link to="/immutable">Immutable</Link>
+                <Link to="/immutable">Immutable</Link> | {" "}
+                <Link to="/hoc">HOC</Link>
             </nav>
             <Outlet />
         </div>

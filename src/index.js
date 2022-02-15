@@ -9,6 +9,7 @@ import Invoice from "routes/invoice";
 // import CounterContainer from "containers/CounterContainer";
 import Count from "routes/count";
 import ImmutableEx from "routes/immutable";
+import Hoc from "routes/highordercomponent";
 
 // storeCreator 를 통해 store 생성 (서버사이드 렌더링 시 필요한 방법)
 // redux 관련 불러오기
@@ -49,6 +50,7 @@ render(
                     <Route path="game" element={<Game />} />
                     <Route path="counter" element={<Count />} />
                     <Route path="immutable" element={<ImmutableEx />} />
+                    <Route path="hoc" element={<Hoc />} />
                     <Route
                         path="*"
                         element={
