@@ -13,11 +13,11 @@ const SET_COLOR = 'counter/SET_COLOR';
 // 액션생성자의 경우 외부에서 사용하므로 export 를 붙임.
 // 두번째 매개변수는 payloadCreator 세번째 매개변수는 metaCreator임.
 // payloadCreator 를 통해 매개변수를 지정할 수 있음.
-export const create = createAction(CREATE, index => index); // 매개변수 color
+export const create = createAction(CREATE, (index: any) => index); // 매개변수 color
 export const remove = createAction(REMOVE);
-export const increment = createAction(INCREMENT, index => index); // 매개변수 index
-export const decrement = createAction(DECREMENT, index => index); // 매개변수 index
-export const setColor = createAction(SET_COLOR, ({ index, color }) => ({ index, color })); // 매개변수 { index, color }
+export const increment = createAction(INCREMENT, (index: any) => index); // 매개변수 index
+export const decrement = createAction(DECREMENT, (index: any) => index); // 매개변수 index
+export const setColor = createAction(SET_COLOR, ({ index, color }: {index: any, color: any}) => ({ index, color })); // 매개변수 { index, color }
 
 
 // 초기 상태 정의
@@ -37,7 +37,7 @@ const initialState = Map({
 // scope가 동일하다는 것은 switch문의 action 마다 필요한 변수를 전부 다른 이름으로 지어야 한다는 말임.
 export default handleActions({
     // [] 로 감싸는 이유는 액션타입에 접두사가 들어가 있기 때문임.
-    [CREATE]: (state, action) => {
+    [CREATE]: (state: { get: (arg0: string) => any; set: (arg0: string, arg1: any) => any; }, action: { payload: any; }) => {
         
         const counters = state.get('counters');
 
@@ -49,40 +49,40 @@ export default handleActions({
         ));
 
     },
-    [REMOVE]: (state, action) => {
+    [REMOVE]: (state: { get: (arg0: string) => any; set: (arg0: string, arg1: any) => any; }, action: any) => {
 
         const counters = state.get('counters');
 
         return state.set('counters', counters.pop());
 
     },
-    [INCREMENT]: (state, action) => {
+    [INCREMENT]: (state: { get: (arg0: string) => any; set: (arg0: string, arg1: any) => any; }, action: { payload: any; }) => {
 
         const counters = state.get('counters');
 
         return state.set('counters', counters.update(
             action.payload,
-            (counter) => counter.set('number', counter.get('number') + 1)
+            (counter: { set: (arg0: string, arg1: any) => any; get: (arg0: string) => number; }) => counter.set('number', counter.get('number') + 1)
         ));
 
     },
-    [DECREMENT]: (state, action) => {
+    [DECREMENT]: (state: { get: (arg0: string) => any; set: (arg0: string, arg1: any) => any; }, action: { payload: any; }) => {
 
         const counters = state.get('counters');
 
         return state.set('counters', counters.update(
             action.payload,
-            (counter) => counter.set('number', counter.get('number') - 1)
+            (counter: { set: (arg0: string, arg1: number) => any; get: (arg0: string) => number; }) => counter.set('number', counter.get('number') - 1)
         ));
 
     },
-    [SET_COLOR]: (state, action) => {
+    [SET_COLOR]: (state: { get: (arg0: string) => any; set: (arg0: string, arg1: any) => any; }, action: { payload: { index: any; color: any; }; }) => {
 
         const counters = state.get('counters');
 
         return state.set('counters', counters.update(
             action.payload.index,
-            (counter) => counter.set('color', action.payload.color)
+            (counter: { set: (arg0: string, arg1: any) => any; }) => counter.set('color', action.payload.color)
         ));
 
     },

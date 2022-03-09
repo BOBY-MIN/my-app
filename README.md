@@ -1,10 +1,30 @@
 
+# 참고 및 출처
+
+* https://velog.io/@velopert
+* https://typescript-kr.github.io/pages/jsx.html
+* https://joshua1988.github.io/ts/intro.html
+* https://ko.reactjs.org/
+* 기존 프로젝트에 typescript 설정 추가
+    + https://create-react-app.dev/docs/adding-typescript/
+
+
 # 개발자 도구 설치
 
 > Redux DevTools
 
 * chrome 확장프로그램
 * 액션이 dispatch 될때마다 로그를 보고 또 그 전 상태로 돌아갈 수 있게 함.
+
+> TypeScript 설치
+
+* npm install -g typescript
+* tsconfig.json 생성 명령어
+    + tsc --init
+* .ts 파일 컴파일 명령어 (tsconfig.json outDir 속성으로 설정한 경로에 .js 파일 생성됨.)
+    + tsc
+* .js 실행 명령어
+    + node dist/practice.js
 
 <br>
 
@@ -153,6 +173,9 @@ $ npm i redux-devtools-extension
 * npm을 통한 모듈 설치 시 사용되는 파일
 * package-lock.json 의 경우 버전대가 지정되어있으므로 npm 설치 시 꼭 필요한 파일임.
 
+> tsconfig.json
+
+* 타입스크립트 설정 파일
 
 <br>
 <br>

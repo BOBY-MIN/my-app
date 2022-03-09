@@ -4,7 +4,7 @@ const initialState = {
     number: 0
 };
 
-const number = (state = initialState, action) => {
+const number = (state = initialState, action: { type: any; }) => {
     switch(action.type) {
         case types.INCREMENT: 
             console.log('INCREMENT reducer 호출');

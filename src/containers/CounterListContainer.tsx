@@ -7,7 +7,7 @@ import { getRandomColor } from 'utils';
 import { Map, List } from 'immutable';
 
 // store 안의 state 값을 props 로 연결
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state: { get: (arg0: string) => any; }) => ({
     // immutable 쓰는 방식으로 변환
     // counters: state.counters
     counters: state.get('counters')
@@ -17,10 +17,10 @@ const mapStateToProps = (state) => ({
     액션 생성자를 사용하여 액션을 생성하고,
     해당 액션을 dispatch 하는 함수를 만든 후, 이를 props 로 연결해줍니다.
 */
-const mapDispatchToProps = (dispatch) => ({
-    onIncrement: (index) => dispatch(actions.increment(index)),
-    onDecrement: (index) => dispatch(actions.decrement(index)),
-    onSetColor: (index) => {
+const mapDispatchToProps = (dispatch: (arg0: any) => void) => ({
+    onIncrement: (index: any) => dispatch(actions.increment(index)),
+    onDecrement: (index: any) => dispatch(actions.decrement(index)),
+    onSetColor: (index: any) => {
         const color = getRandomColor();
         dispatch(actions.setColor({index, color}));
     }
