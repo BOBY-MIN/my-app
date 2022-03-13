@@ -13,9 +13,8 @@ $ npm init -y
 -- tsconfig.json 자동 생성
 $ tsc --init
 
--- typescript 컴파일
--- tsconfig.json 파일의 outDir에 지정된 경로에 js 생성됨.
-$ tsc
+-- typescript 컴파일 (js 생성됨)
+$ tsc [파일명.ts]
 
 -- js 실행
 $ node dist/practice.js
