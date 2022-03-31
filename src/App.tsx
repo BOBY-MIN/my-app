@@ -6,6 +6,8 @@ import Counter from './Counter';
 import MyForm from './MyForm';
 import CounterReduce from './CounterWithReduce';
 import ReducerSample from './ReducerSample';
+import TodoForm from './components/TodoForm';
+import TodoList from './components/TodoList';
 
 function App() {
   
@@ -32,6 +34,8 @@ function App() {
         <MyForm onSubmit={onSubmit} />
         <CounterReduce />
         <ReducerSample />
+        <TodoForm />
+        <TodoList />
       </header>
     </div>
   );
