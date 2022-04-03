@@ -8,6 +8,7 @@ import CounterReduce from './CounterWithReduce';
 import ReducerSample from './ReducerSample';
 import TodoForm from './components/TodoForm';
 import TodoList from './components/TodoList';
+import { TodosContextProvider } from './contexts/TodosContext';
 
 function App() {
   
@@ -34,8 +35,16 @@ function App() {
         <MyForm onSubmit={onSubmit} />
         <CounterReduce />
         <ReducerSample />
-        <TodoForm />
-        <TodoList />
+        {/* <TodoForm />
+        <TodoList /> */}
+        {/* TodosContextProvider 내부에서 Provider 태그 구현중
+            TodosContext 에 dispatch 객체와 state 객체와 hook 구현중
+            TodoForm, TodoList 에서는 TodosContext 에서 구현한 hook을 이용
+        */}
+        <TodosContextProvider>
+            <TodoForm />
+            <TodoList />
+        </TodosContextProvider>
       </header>
     </div>
   );

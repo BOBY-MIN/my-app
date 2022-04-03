@@ -1,5 +1,6 @@
 import React from "react";
 import './TodoItem.css';
+import { useTodosDispatch } from "../contexts/TodosContext";
 
 export interface TodoItemProps {
     todo: {
@@ -10,10 +11,34 @@ export interface TodoItemProps {
 }
 
 function TodoItem({ todo }: TodoItemProps) {
+    const dispatch = useTodosDispatch();
+
+    const onToggle = () => {
+        dispatch({
+            attr:{
+                type: "TOGGLE"
+                ,id: todo.id
+            }
+        });
+    };
+
+    const onRemove = () => {
+        dispatch({
+            attr: {
+                type: "REMOVE"
+                ,id: todo.id
+            }
+        });
+    };
+
     return (
         <li className={`TodoItem ${todo.done ? 'done' : ''}`} >
-            <span className="text">{todo.text}</span>
-            <span className="remove">(X)</span>
+            <span className="text" onClick={onToggle}>
+                {todo.text}
+            </span>
+            <span className="remove" onClick={onRemove}>
+                (X)
+            </span>
         </li>
     );
 }
