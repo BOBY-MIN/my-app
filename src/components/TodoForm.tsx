@@ -7,12 +7,9 @@ function TodoForm() {
 
     const onSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-        dispatch(
-            {
-            attr: {
-                type: "CREATE"
-                ,text: value
-            }
+        dispatch({
+            type: "CREATE"
+            ,text: value
         });
         // 새 항목 생성하기
         setValue('');

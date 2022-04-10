@@ -12,14 +12,21 @@ export const increaseBy = (diff: number) => ({
     ,payload: diff
 });
 
-interface CounterAction {
-    attr:
+// interface CounterAction {
+//     payload:
+//         ReturnType<typeof increase>
+//         |
+//         ReturnType<typeof decrease>
+//         |
+//         ReturnType<typeof increaseBy>
+// }
+
+type CounterAction = 
         ReturnType<typeof increase>
         |
         ReturnType<typeof decrease>
         |
-        ReturnType<typeof increaseBy>
-}
+        ReturnType<typeof increaseBy>;
 
 interface CounterState {
     count: number;
@@ -30,13 +37,13 @@ const initialState: CounterState = {
 };
 
 function counter(state: CounterState = initialState, action: CounterAction) {
-    switch (action.attr.type) {
+    switch (action.type) {
         case INCREASE:
             return { count: state.count + 1 };
         case DECREASE:
             return { count: state.count - 1 };
         case INCREASE_BY:
-            return { count: state.count + action.attr.payload };
+            return { count: state.count + action.payload };
         default:
             return state;
     }

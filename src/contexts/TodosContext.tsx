@@ -9,36 +9,33 @@ export interface Todo {
 
 const TodosStateContext = createContext<Todo[] | undefined>(undefined);
 
-interface Action {
-    attr: 
+type Action = 
         { type: 'CREATE'; text: string }
         |
         { type: 'TOGGLE'; id: number }
         |
-        { type: 'REMOVE'; id: number }
-}
+        { type: 'REMOVE'; id: number };
 
 const TodosDispatchContext = createContext<Dispatch<Action> | undefined>(
     undefined
 );
 
 function todosReducer(state: Todo[], action: Action): Todo[] {
-    const actionAttr = action.attr;
     
-    switch (actionAttr.type) {
+    switch (action.type) {
         case 'CREATE':
             const nextId = Math.max(...state.map(todo => todo.id)) + 1;
             return state.concat({
                 id: nextId
-                ,text: actionAttr.text
+                ,text: action.text
                 ,done: false
             });
         case 'TOGGLE':
             return state.map(todo =>
-                    todo.id === actionAttr.id ? { ...todo, done: !todo.done} : todo
+                    todo.id === action.id ? { ...todo, done: !todo.done} : todo
                 );
         case 'REMOVE':
-            return state.filter(todo => todo.id !== actionAttr.id);
+            return state.filter(todo => todo.id !== action.id);
         default:
             throw new Error('Unhandled action');
     }

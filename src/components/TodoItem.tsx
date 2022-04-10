@@ -15,19 +15,15 @@ function TodoItem({ todo }: TodoItemProps) {
 
     const onToggle = () => {
         dispatch({
-            attr:{
-                type: "TOGGLE"
-                ,id: todo.id
-            }
+            type: "TOGGLE"
+            ,id: todo.id
         });
     };
 
     const onRemove = () => {
         dispatch({
-            attr: {
-                type: "REMOVE"
-                ,id: todo.id
-            }
+            type: "REMOVE"
+            ,id: todo.id
         });
     };
 

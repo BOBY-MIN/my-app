@@ -2,13 +2,14 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Greetings from './Greetings';
-import Counter from './Counter';
 import MyForm from './MyForm';
 import CounterReduce from './CounterWithReduce';
 import ReducerSample from './ReducerSample';
 import TodoForm from './components/TodoForm';
 import TodoList from './components/TodoList';
+import CounterContainer from './containers/CounterContainer';
 import { TodosContextProvider } from './contexts/TodosContext';
+import Counter from './components/Counter';
 
 function App() {
   
@@ -45,6 +46,7 @@ function App() {
             <TodoForm />
             <TodoList />
         </TodosContextProvider>
+        <CounterContainer />
       </header>
     </div>
   );
